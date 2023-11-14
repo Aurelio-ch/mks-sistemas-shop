@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { QueryProvider } from '@/context/query-context'
 import StyledComponentsRegistry from '@/lib/registry'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
@@ -22,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={montserrat.className}>
-        <StyledComponentsRegistry>
-          <Header />
-          {children}
-          <Footer />
-        </StyledComponentsRegistry>
+        <QueryProvider>
+          <StyledComponentsRegistry>
+            <Header />
+            {children}
+            <Footer />
+          </StyledComponentsRegistry>
+        </QueryProvider>
       </body>
     </html>
   )

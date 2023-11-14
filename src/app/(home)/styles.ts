@@ -12,11 +12,19 @@ export const Container = styled.main`
 export const Product = styled.div`
   background-color: #fff;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.13);
   padding-top: 30px;
+
+  &:hover {
+    img {
+      transition: 0.4s;
+      transform: scale(1.1);
+    }
+  }
 
   button {
     display: flex;
@@ -41,21 +49,23 @@ export const Product = styled.div`
 `
 export const ProductImage = styled(Image)`
   margin: 0 auto;
-  width: 110px;
+  width: 150px;
   height: auto;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 `
 export const ProductDetails = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: space-between;
+  gap: 15px;
   padding: 20px 16px;
   div {
     display: flex;
     align-items: start;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 4px;
     h1 {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 400;
       color: #2c2c2c;
     }
