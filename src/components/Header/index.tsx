@@ -10,7 +10,7 @@ export function Header() {
         src="/logo.png"
         width={200}
         height={45.83}
-        alt="logo MKS Sistemas"
+        alt="logo MKS Sistemas Shop"
       />
       <div>
         <ShoppingCart />
