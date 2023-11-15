@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   padding: 1.5rem 4.2rem;
   background-color: #0f52ba;
 
-  div {
+  button {
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -16,5 +16,7 @@ export const HeaderContainer = styled.header`
     border-radius: 10px;
     font-size: 1rem;
     font-weight: bold;
+
+    border-style: none;
   }
 `
