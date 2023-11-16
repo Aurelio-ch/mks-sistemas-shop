@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'MK Sistema Shop',
+  title: 'MKS Sistema Shop',
 }
 
 export default function RootLayout({

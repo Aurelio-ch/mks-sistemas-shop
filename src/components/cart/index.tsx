@@ -58,7 +58,7 @@ export function Cart() {
                 >
                   <ProductCartHeader>
                     <Image width={150} height={150} src={item.photo} alt="" />
-                    <p>Headset Cloud Stinger</p>
+                    <p>{item.name}</p>
                   </ProductCartHeader>
 
                   <ProductCartBox>

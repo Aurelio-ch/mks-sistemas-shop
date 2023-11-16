@@ -22,5 +22,11 @@ export const HeaderContainer = styled.header`
     font-weight: bold;
 
     border-style: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #ddd;
+    }
   }
 `
