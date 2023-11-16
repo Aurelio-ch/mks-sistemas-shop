@@ -8,6 +8,7 @@ import {
   CartInfo,
   HeaderCart,
   ProductCart,
+  ProductCartBox,
   ProductCartHeader,
   ProductCartQuantity,
   ProductsContainerCart,
@@ -46,33 +47,45 @@ export function Cart() {
           <ProductsContainerCart>
             {items.map((item) => {
               return (
-                <ProductCart key={item.id}>
+                <ProductCart
+                  key={item.id}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
                   <ProductCartHeader>
                     <Image width={150} height={150} src={item.photo} alt="" />
                     <p>Headset Cloud Stinger</p>
                   </ProductCartHeader>
 
-                  <ProductCartQuantity>
-                    <span>Qtd:</span>
-                    <div>
-                      <button
-                        type="button"
-                        disabled={item.quantity === 1}
-                        onClick={() => handleToDecrease(item.id)}
-                      >
-                        <Minus size={13} />
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleToIncrease(item.id)}
-                      >
-                        <Plus size={13} />
-                      </button>
-                    </div>
-                  </ProductCartQuantity>
+                  <ProductCartBox>
+                    <ProductCartQuantity>
+                      <span>Qtd:</span>
+                      <div>
+                        <button
+                          type="button"
+                          disabled={item.quantity === 1}
+                          onClick={() => handleToDecrease(item.id)}
+                        >
+                          <Minus size={13} />
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleToIncrease(item.id)}
+                        >
+                          <Plus size={13} />
+                        </button>
+                      </div>
+                    </ProductCartQuantity>
 
-                  <span className="price">{item.price}</span>
+                    <span className="price">
+                      {parseFloat(item.price).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      })}
+                    </span>
+                  </ProductCartBox>
                   <button
                     className="delete-product"
                     onClick={() => handleRemoveProduct(item.id)}

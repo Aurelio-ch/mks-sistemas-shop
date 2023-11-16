@@ -7,6 +7,13 @@ export const Container = styled.main`
   ); // calculo para manter o conteudo sempre ocupado a tela toda
   padding: 5rem 10rem;
   background-color: #e5e5e5;
+
+  @media (max-width: 900px) {
+    padding: 3rem 5rem;
+  }
+  @media (max-width: 600px) {
+    padding: 2rem 2rem;
+  }
 `
 
 export const Product = styled.div`
@@ -91,4 +98,14 @@ export const ProductContainer = styled.div`
   grid-template-columns: repeat(4, 250px);
   justify-content: center;
   gap: 30px;
+
+  @media (max-width: 1280px) {
+    grid-template-columns: repeat(3, 250px);
+  }
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 250px);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 250px);
+  }
 `

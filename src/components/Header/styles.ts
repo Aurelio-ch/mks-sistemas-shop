@@ -7,6 +7,10 @@ export const HeaderContainer = styled.header`
   padding: 1.5rem 4.2rem;
   background-color: #0f52ba;
 
+  @media (max-width: 900px) {
+    padding: 1rem 1rem;
+  }
+
   button {
     display: flex;
     gap: 1rem;

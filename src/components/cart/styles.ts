@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const CartContainer = styled(Dialog.Content)`
@@ -14,6 +15,10 @@ export const CartContainer = styled(Dialog.Content)`
 
   height: 100vh;
   width: 500px;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 
   a {
     display: flex;
@@ -89,7 +94,7 @@ export const ProductsContainerCart = styled.div`
   }
 `
 
-export const ProductCart = styled.div`
+export const ProductCart = styled(motion.div)`
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -100,15 +105,26 @@ export const ProductCart = styled.div`
   border-radius: 8px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.13);
 
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
   .price {
     font-weight: bold;
+
+    @media (max-width: 600px) {
+      font-weight: bold;
+      color: #fff;
+      background-color: #373737;
+      padding: 6px 7px;
+      border-radius: 10px;
+    }
   }
 
   .delete-product {
     position: absolute;
     right: -8px;
     top: -8px;
-    z-index: 99999999;
 
     border-style: none;
     padding: 0.3rem;
@@ -122,6 +138,18 @@ export const ProductCart = styled.div`
     &:hover {
       background-color: #000;
     }
+
+    @media (max-width: 600px) {
+      background-color: transparent;
+      color: #171717;
+      padding: 0;
+      right: 8px;
+      top: 8px;
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 `
 
@@ -130,9 +158,16 @@ export const ProductCartHeader = styled.header`
   align-items: center;
   gap: 20px;
 
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
   img {
     height: 80px;
     width: auto;
+    @media (max-width: 600px) {
+      height: 100px;
+    }
   }
 `
 
@@ -142,6 +177,10 @@ export const ProductCartQuantity = styled.div`
   gap: 5px;
   span {
     font-size: 12px;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
   div {
@@ -159,6 +198,11 @@ export const ProductCartQuantity = styled.div`
       text-align: center;
       font-size: 16px;
       width: 100%;
+
+      @media (max-width: 600px) {
+        display: block;
+        font-size: 20px;
+      }
     }
 
     button {
@@ -168,6 +212,13 @@ export const ProductCartQuantity = styled.div`
 
       &:disabled {
         cursor: not-allowed;
+      }
+
+      @media (max-width: 600px) {
+        svg {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }
@@ -182,4 +233,10 @@ export const ResumeCart = styled.div`
     font-size: 1.2rem;
     font-weight: bold;
   }
+`
+
+export const ProductCartBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `
