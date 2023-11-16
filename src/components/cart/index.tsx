@@ -17,6 +17,9 @@ import {
 
 export function Cart() {
   const { items, decreaseQuantity, increaseQuantity, removeProduct } = useCart()
+  const totalCart = items.reduce((soma, { price }) => {
+    return soma + price
+  }, 0)
 
   function handleToDecrease(id: number) {
     decreaseQuantity(id)
@@ -80,7 +83,7 @@ export function Cart() {
                     </ProductCartQuantity>
 
                     <span className="price">
-                      {parseFloat(item.price).toLocaleString('pt-BR', {
+                      {item.price.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                       })}
@@ -99,7 +102,12 @@ export function Cart() {
 
           <ResumeCart>
             <span>Total:</span>
-            <span>RS300</span>
+            <span>
+              {totalCart.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </span>
           </ResumeCart>
         </CartInfo>
         <Link href="/">Finalizar Compras</Link>

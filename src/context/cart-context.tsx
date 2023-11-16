@@ -6,7 +6,7 @@ import { ReactNode, createContext, useContext, useState } from 'react'
 interface CartItem {
   id: number
   name: string
-  price: string
+  price: number
   photo: string
   quantity: number
 }
@@ -31,7 +31,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (productInCart) {
         return state.map((item) => {
           if (item.id === product.id) {
-            return { ...item, quantity: item.quantity + 1 }
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+              price: parseFloat(product.price) * (item.quantity + 1),
+            }
           } else {
             return item
           }
@@ -40,7 +44,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         const newProduct: CartItem = {
           id: product.id,
           name: product.name,
-          price: product.price,
+          price: parseFloat(product.price),
           photo: product.photo,
           quantity: 1,
         }
@@ -56,7 +60,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (productInCart) {
         return state.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 }
+            return {
+              ...item,
+              quantity: item.quantity - 1,
+              price: (item.price / item.quantity) * (item.quantity - 1),
+            }
           } else {
             return item
           }
@@ -73,7 +81,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (productInCart) {
         return state.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 }
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+              price: (item.price / item.quantity) * (item.quantity + 1),
+            }
           } else {
             return item
           }

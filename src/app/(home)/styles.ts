@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const Container = styled.main`
   min-height: calc(
@@ -16,7 +17,7 @@ export const Container = styled.main`
   }
 `
 
-export const Product = styled.div`
+export const Product = styled(motion.div)`
   background-color: #fff;
   display: flex;
   justify-content: space-between;
@@ -107,5 +108,51 @@ export const ProductContainer = styled.div`
   }
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 250px);
+  }
+`
+
+export const ConteinerError = styled.div`
+  margin: 0 auto;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  img {
+    height: 500px;
+    width: auto;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
+    span {
+      font-size: 30px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    img {
+      height: 500px;
+      width: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    span {
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    img {
+      height: 300px;
+      width: auto;
+    }
   }
 `

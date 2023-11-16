@@ -1,9 +1,12 @@
 'use client'
+import { Skeleton } from '@/components/skeleton'
 import { useCart } from '@/context/cart-context'
 import { ShoppingBag } from 'lucide-react'
+import Image from 'next/image'
 import { useQuery } from 'react-query'
 import {
   Container,
+  ConteinerError,
   Product,
   ProductContainer,
   ProductDetails,
@@ -36,15 +39,28 @@ export default function Home() {
 
   return (
     <Container>
-      <ProductContainer>
-        {isLoading ? (
-          <h1>carregando...</h1>
-        ) : error ? (
-          <h1>error😢😢</h1>
-        ) : (
-          data.products.map((product: Product) => {
+      {isLoading ? (
+        <Skeleton />
+      ) : error ? (
+        <ConteinerError>
+          <Image
+            src="/erro-image.png"
+            width={500}
+            height={500}
+            alt="Imagem de Erro"
+          />
+          <span>Ocorreu um erro Porfavor entrar em contato com o suporte</span>
+        </ConteinerError>
+      ) : (
+        <ProductContainer>
+          {data.products.map((product: Product) => {
             return (
-              <Product key={product.id}>
+              <Product
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                key={product.id}
+              >
                 <ProductImage
                   src={product.photo}
                   width={500}
@@ -73,9 +89,9 @@ export default function Home() {
                 </button>
               </Product>
             )
-          })
-        )}
-      </ProductContainer>
+          })}
+        </ProductContainer>
+      )}
     </Container>
   )
 }
