@@ -1,4 +1,5 @@
 'use client'
+import { useCart } from '@/context/cart-context'
 import { ShoppingBag } from 'lucide-react'
 import { useQuery } from 'react-query'
 import {
@@ -12,12 +13,13 @@ import {
 export interface Product {
   id: number
   name: string
-  description: string
+  description?: string
   photo: string
   price: string
 }
 
 export default function Home() {
+  const { addToCart } = useCart()
   const { data, isLoading, error } = useQuery('Products', async () => {
     const response = await fetch(
       'https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=DESC',
@@ -26,6 +28,11 @@ export default function Home() {
 
     return data
   })
+
+  function handleAddProductToCart(product: Product) {
+    const { id, name, photo, price } = product
+    addToCart({ id, name, photo, price })
+  }
 
   return (
     <Container>
@@ -57,7 +64,10 @@ export default function Home() {
                   </div>
                   <p>{product.description}</p>
                 </ProductDetails>
-                <button>
+                <button
+                  type="button"
+                  onClick={() => handleAddProductToCart(product)}
+                >
                   <ShoppingBag />
                   Comprar
                 </button>

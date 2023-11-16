@@ -1,4 +1,5 @@
 'use client'
+import { useCart } from '@/context/cart-context'
 import * as Dialog from '@radix-ui/react-dialog'
 import { ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
@@ -6,6 +7,7 @@ import { Cart } from '../cart'
 import { HeaderContainer } from './styles'
 
 export function Header() {
+  const { items } = useCart()
   return (
     <HeaderContainer>
       <Image
@@ -18,7 +20,7 @@ export function Header() {
         <Dialog.Trigger asChild>
           <button>
             <ShoppingCart />
-            <span>0</span>
+            <span>{items.length}</span>
           </button>
         </Dialog.Trigger>
 

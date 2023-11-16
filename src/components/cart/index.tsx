@@ -1,5 +1,7 @@
+import { useCart } from '@/context/cart-context'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Minus, Plus, X } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   CartContainer,
@@ -13,7 +15,19 @@ import {
 } from './styles'
 
 export function Cart() {
-  const gerarProduct = [1, 2, 3, 4, 5, 6]
+  const { items, decreaseQuantity, increaseQuantity, removeProduct } = useCart()
+
+  function handleToDecrease(id: number) {
+    decreaseQuantity(id)
+  }
+
+  function handleToIncrease(id: number) {
+    increaseQuantity(id)
+  }
+
+  function handleRemoveProduct(id: number) {
+    removeProduct(id)
+  }
 
   return (
     <Dialog.Portal>
@@ -30,29 +44,39 @@ export function Cart() {
           </HeaderCart>
 
           <ProductsContainerCart>
-            {gerarProduct.map((product) => {
+            {items.map((item) => {
               return (
-                <ProductCart key={product}>
+                <ProductCart key={item.id}>
                   <ProductCartHeader>
-                    <img src="apple-watch.png" alt="" />
+                    <Image width={150} height={150} src={item.photo} alt="" />
                     <p>Headset Cloud Stinger</p>
                   </ProductCartHeader>
 
                   <ProductCartQuantity>
                     <span>Qtd:</span>
                     <div>
-                      <button>
+                      <button
+                        type="button"
+                        disabled={item.quantity === 1}
+                        onClick={() => handleToDecrease(item.id)}
+                      >
                         <Minus size={13} />
                       </button>
-                      <span>1</span>
-                      <button>
+                      <span>{item.quantity}</span>
+                      <button
+                        type="button"
+                        onClick={() => handleToIncrease(item.id)}
+                      >
                         <Plus size={13} />
                       </button>
                     </div>
                   </ProductCartQuantity>
 
-                  <span className="price">R$399</span>
-                  <button className="delete-product">
+                  <span className="price">{item.price}</span>
+                  <button
+                    className="delete-product"
+                    onClick={() => handleRemoveProduct(item.id)}
+                  >
                     <X size={13} />
                   </button>
                 </ProductCart>

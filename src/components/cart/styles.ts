@@ -71,7 +71,7 @@ export const ProductsContainerCart = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   margin: 20px 0;
   padding: 10px 10px;
   overflow-y: auto;
@@ -131,7 +131,8 @@ export const ProductCartHeader = styled.header`
   gap: 20px;
 
   img {
-    width: 80px;
+    height: 80px;
+    width: auto;
   }
 `
 
@@ -145,6 +146,8 @@ export const ProductCartQuantity = styled.div`
 
   div {
     display: flex;
+    min-width: 80px;
+    justify-content: space-between;
     border: 1px solid #bfbfbf;
     align-items: center;
     line-height: 0;
@@ -153,13 +156,19 @@ export const ProductCartQuantity = styled.div`
     padding: 4px;
 
     span {
+      text-align: center;
       font-size: 16px;
+      width: 100%;
     }
 
     button {
       background-color: transparent;
       border-style: none;
       cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
   }
 `
