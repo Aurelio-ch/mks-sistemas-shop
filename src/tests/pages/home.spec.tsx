@@ -1,6 +1,8 @@
 import Home from '@/app/(home)/page'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 
+const mockAddToCart = jest.fn().mockReturnValue('ok')
+
 jest.mock('@/context/cart-context', () => {
   return {
     useCart() {
@@ -15,7 +17,7 @@ jest.mock('@/context/cart-context', () => {
             quantity: 1,
           },
         ],
-        addToCart: jest.fn(),
+        addToCart: mockAddToCart,
       }
     },
   }
@@ -57,9 +59,9 @@ describe('Home Page', () => {
     render(<Home />)
 
     await waitFor(() => {
-      const clickButton = fireEvent.click(screen.getByAltText('Comprar'))
+      fireEvent.click(screen.getByText('Comprar'))
 
-      expect(clickButton).toHaveBeenCalled()
+      expect(mockAddToCart).toHaveBeenCalled()
     })
   })
 })
