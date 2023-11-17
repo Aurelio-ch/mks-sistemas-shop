@@ -68,6 +68,7 @@ export function Cart() {
                         <button
                           type="button"
                           disabled={item.quantity === 1}
+                          data-testid="buttonDecrease"
                           onClick={() => handleToDecrease(item.id)}
                         >
                           <Minus size={13} />
@@ -75,6 +76,7 @@ export function Cart() {
                         <span>{item.quantity}</span>
                         <button
                           type="button"
+                          data-testid="buttonIncrease"
                           onClick={() => handleToIncrease(item.id)}
                         >
                           <Plus size={13} />
@@ -91,6 +93,7 @@ export function Cart() {
                   </ProductCartBox>
                   <button
                     className="delete-product"
+                    data-testid="buttonRemove"
                     onClick={() => handleRemoveProduct(item.id)}
                   >
                     <X size={13} />
