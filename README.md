@@ -25,4 +25,4 @@ API: [API REST](http://https://mks-frontend-challenge-04811e8151e6.herokuapp.com
 
 
 ### Link do Deploy e considerações finais
-Todo esse teste foi um grande desafio a mim mesmo e está finalizado mais esse desafio, com o [deploy feito na vercel]([http://https://mks-sistemas-shop.vercel.app](https://mks-sistemas-shop.vercel.app) "deploy feito na vercel")  automação de teste ao fazer um push para o repositório e muitas outras funcionalidades que me orgulho de ter feito, agora é partir para o próximo desafio e nunca perder a vontade de aprender e se desafiar.
+Todo esse teste foi um grande desafio a mim mesmo e está finalizado mais esse desafio, com o [deploy feito na vercel](https://mks-sistemas-shop.vercel.app)  automação de teste ao fazer um push para o repositório e muitas outras funcionalidades que me orgulho de ter feito, agora é partir para o próximo desafio e nunca perder a vontade de aprender e se desafiar.
